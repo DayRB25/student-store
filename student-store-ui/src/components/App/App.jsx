@@ -4,7 +4,8 @@ import Navbar from "../Navbar/Navbar";
 import Sidebar from "../Sidebar/Sidebar";
 import Home from "../Home/Home";
 import "./App.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import axios from "axios";
 
 export default function App() {
   const [products, setProducts] = useState([]);
@@ -23,6 +24,25 @@ export default function App() {
   const handleOnCheckoutFormChange = (name, value) => {};
 
   const handleOnSubmitCheckoutForm = () => {};
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const res = await axios.get(
+          "https://codepath-store-api.herokuapp.com/store"
+        );
+        if (res.data.products == []) {
+          setError(true);
+        } else {
+          setProducts(res.data.products);
+        }
+      } catch (error) {
+        setError(true);
+      }
+    };
+
+    fetchProducts();
+  }, []);
 
   return (
     <div className="app">
