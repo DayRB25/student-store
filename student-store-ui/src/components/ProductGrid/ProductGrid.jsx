@@ -9,8 +9,11 @@ export default function ProductGrid({
   handleAddItemToCart,
   handleRemoveItemFromCart,
   filter,
+  search,
 }) {
   const [filteredProducts, setfilteredProducts] = useState([]);
+  const [searchedProducts, setSearchedProducts] = useState([]);
+
   ///////
   // adjust product display depending upon selected filter categories
   //////
@@ -24,9 +27,23 @@ export default function ProductGrid({
   }, [products, filter]);
 
   ///////
+  // adjust product display depending upon selected filter categories
+  //////
+  useEffect(() => {
+    if (search === "") {
+      setSearchedProducts(filteredProducts);
+    } else {
+      const newDisplay = filteredProducts.filter((item) =>
+        item.name.toLowerCase().includes(search.toLowerCase())
+      );
+      setSearchedProducts(newDisplay);
+    }
+  }, [search, filteredProducts]);
+
+  ///////
   // generate product card element for each item in filtered product list
   //////
-  let shopItems = filteredProducts.map((product) => (
+  let shopItems = searchedProducts.map((product) => (
     <ProductCard
       product={product}
       productId={product.id}

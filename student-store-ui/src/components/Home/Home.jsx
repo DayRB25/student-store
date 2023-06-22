@@ -27,6 +27,7 @@ export default function Home({
         handleAddItemToCart={handleAddItemToCart}
         handleRemoveItemFromCart={handleRemoveItemFromCart}
         filter={filter}
+        search={search}
       />
     </div>
   );
