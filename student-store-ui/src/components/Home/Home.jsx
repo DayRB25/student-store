@@ -10,6 +10,8 @@ export default function Home({
   handleRemoveItemFromCart,
   filter,
   handleFilterChange,
+  search,
+  handleChangeSearch,
 }) {
   return (
     <div className="home">
@@ -17,6 +19,8 @@ export default function Home({
       <SearchAndFilter
         filter={filter}
         handleFilterChange={handleFilterChange}
+        search={search}
+        handleChangeSearch={handleChangeSearch}
       />
       <ProductGrid
         products={products}

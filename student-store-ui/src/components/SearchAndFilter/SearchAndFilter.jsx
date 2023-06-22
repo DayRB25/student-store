@@ -2,7 +2,12 @@ import * as React from "react";
 import "./SearchAndFilter.css";
 import { useState } from "react";
 
-export default function SearchAndFilter({ filter, handleFilterChange }) {
+export default function SearchAndFilter({
+  filter,
+  handleFilterChange,
+  search,
+  handleChangeSearch,
+}) {
   /////
   // state determining visibility of filters
   /////
@@ -19,7 +24,12 @@ export default function SearchAndFilter({ filter, handleFilterChange }) {
     <div className="searchandfilter">
       <div className="searchandfiltercontent">
         <div className="search">
-          <input type="text" placeholder="Enter Item Name"></input>
+          <input
+            type="text"
+            placeholder="Enter Item Name"
+            value={search}
+            onChange={handleChangeSearch}
+          ></input>
           <button>
             <img
               className="searchIcon"

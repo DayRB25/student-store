@@ -16,6 +16,11 @@ export default function App() {
   const [checkoutForm, setCheckoutForm] = useState([]);
 
   const [filter, setFilter] = useState("all");
+  const [search, setSearch] = useState("");
+
+  const handleChangeSearch = (e) => {
+    setSearch(e.target.value);
+  };
 
   const handleFilterChange = (newFilter) => {
     setFilter(newFilter);
@@ -63,6 +68,8 @@ export default function App() {
             handleRemoveItemFromCart={handleRemoveItemFromCart}
             filter={filter}
             handleFilterChange={handleFilterChange}
+            search={search}
+            handleChangeSearch={handleChangeSearch}
           />
         </main>
       </BrowserRouter>
