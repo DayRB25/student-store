@@ -1,0 +1,31 @@
+.about {
+    margin-bottom: 30px;
+}
+
+
+
+.about-card {
+    display: flex;
+    align-items: center;
+    max-width: 1000px;
+    height: 330px;
+    background-color: white;
+    border: 1px solid #e0e0e0;
+}
+
+.about-text {
+    padding: 30px 36px;
+
+}
+
+.about-text p {
+    font-size: 18px;
+    color: #5b5b5b;
+}
+
+.about-img {
+    background-color: #2c4047;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}

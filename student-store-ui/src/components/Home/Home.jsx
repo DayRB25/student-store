@@ -3,6 +3,7 @@ import "./Home.css";
 import Hero from "../Hero/Hero";
 import ProductGrid from "../ProductGrid/ProductGrid";
 import SearchAndFilter from "../SearchAndFilter/SearchAndFilter";
+import About from "../About/About";
 
 export default function Home({
   products,
@@ -29,6 +30,7 @@ export default function Home({
         filter={filter}
         search={search}
       />
+      <About />
     </div>
   );
 }
