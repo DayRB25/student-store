@@ -18,6 +18,16 @@ export default function SearchAndFilter({ filter, handleFilterChange }) {
   return (
     <div className="searchandfilter">
       <div className="searchandfiltercontent">
+        <div className="search">
+          <input type="text" placeholder="Enter Item Name"></input>
+          <button>
+            <img
+              className="searchIcon"
+              alt="magnifying glass"
+              src="src/assetts/magnifying-glass.png"
+            />
+          </button>
+        </div>
         <div className="filter">
           <i
             className="material-icons"
