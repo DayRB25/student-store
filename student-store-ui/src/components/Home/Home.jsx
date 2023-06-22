@@ -5,6 +5,7 @@ import ProductGrid from "../ProductGrid/ProductGrid";
 import SearchAndFilter from "../SearchAndFilter/SearchAndFilter";
 import About from "../About/About";
 import Contact from "../Contact/Contact";
+import Footer from "../Footer/Footer";
 
 export default function Home({
   products,
@@ -33,6 +34,7 @@ export default function Home({
       />
       <About />
       <Contact />
+      <Footer />
     </div>
   );
 }
