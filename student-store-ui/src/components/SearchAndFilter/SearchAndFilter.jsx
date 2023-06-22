@@ -3,8 +3,14 @@ import "./SearchAndFilter.css";
 import { useState } from "react";
 
 export default function SearchAndFilter({ filter, handleFilterChange }) {
+  /////
+  // state determining visibility of filters
+  /////
   const [displayFilters, setDisplayFilters] = useState(true);
 
+  /////
+  // function to negate (flip) current state of filter visibility
+  /////
   const handleFilterVisibilityToggle = () => {
     setDisplayFilters((prevDisplayFilter) => !prevDisplayFilter);
   };
