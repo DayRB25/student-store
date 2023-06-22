@@ -11,7 +11,9 @@ export default function ProductGrid({
   filter,
   search,
 }) {
+  // state defining the products matching filter
   const [filteredProducts, setfilteredProducts] = useState([]);
+  // state defining the products matching both filter and search term
   const [searchedProducts, setSearchedProducts] = useState([]);
 
   ///////
@@ -27,7 +29,7 @@ export default function ProductGrid({
   }, [products, filter]);
 
   ///////
-  // adjust product display depending upon selected filter categories
+  // adjust filtered product display depending upon current search term
   //////
   useEffect(() => {
     if (search === "") {
