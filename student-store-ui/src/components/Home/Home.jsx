@@ -4,6 +4,7 @@ import Hero from "../Hero/Hero";
 import ProductGrid from "../ProductGrid/ProductGrid";
 import SearchAndFilter from "../SearchAndFilter/SearchAndFilter";
 import About from "../About/About";
+import Contact from "../Contact/Contact";
 
 export default function Home({
   products,
@@ -31,6 +32,7 @@ export default function Home({
         search={search}
       />
       <About />
+      <Contact />
     </div>
   );
 }
