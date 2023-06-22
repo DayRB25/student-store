@@ -1,15 +1,30 @@
 import * as React from "react";
 import "./SearchAndFilter.css";
+import { useState } from "react";
 
 export default function SearchAndFilter({ filter, handleFilterChange }) {
+  const [displayFilters, setDisplayFilters] = useState(true);
+
+  const handleFilterVisibilityToggle = () => {
+    setDisplayFilters((prevDisplayFilter) => !prevDisplayFilter);
+  };
+
   return (
     <div className="searchandfilter">
       <div className="searchandfiltercontent">
         <div className="filter">
-          <i className="material-icons" id="filter-icon">
+          <i
+            className="material-icons"
+            id="filter-icon"
+            onClick={handleFilterVisibilityToggle}
+          >
             menu
           </i>
-          <ul className="filter-options">
+          <ul
+            className={
+              displayFilters ? "filter-options" : "filter-options closed"
+            }
+          >
             <li
               className={filter === "all" ? "active" : undefined}
               onClick={() => handleFilterChange("all")}
