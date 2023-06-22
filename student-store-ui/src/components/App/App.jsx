@@ -15,6 +15,12 @@ export default function App() {
   const [shoppingCart, setShoppingCart] = useState([]);
   const [checkoutForm, setCheckoutForm] = useState([]);
 
+  const [filter, setFilter] = useState("all");
+
+  const handleFilterChange = (newFilter) => {
+    setFilter(newFilter);
+  };
+
   const handleOnToggle = () => {};
 
   const handleAddItemToCart = (productId) => {};
@@ -55,6 +61,8 @@ export default function App() {
             products={products}
             handleAddItemToCart={handleAddItemToCart}
             handleRemoveItemFromCart={handleRemoveItemFromCart}
+            filter={filter}
+            handleFilterChange={handleFilterChange}
           />
         </main>
       </BrowserRouter>
