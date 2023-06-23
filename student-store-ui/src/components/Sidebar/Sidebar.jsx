@@ -3,6 +3,7 @@ import "./Sidebar.css";
 import { useState } from "react";
 
 import ShoppingCart from "../ShoppingCart/ShoppingCart";
+import CheckoutForm from "../CheckoutForm/CheckoutForm";
 
 export default function Sidebar({
   isOpen,
@@ -23,6 +24,7 @@ export default function Sidebar({
               products={products}
               shoppingCart={shoppingCart}
             />
+            <CheckoutForm />
           </>
         )}
       </div>
