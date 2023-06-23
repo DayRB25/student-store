@@ -15,6 +15,7 @@ export default function Home({
   handleFilterChange,
   search,
   handleChangeSearch,
+  isFetching,
 }) {
   return (
     <div id="home" className="home">
@@ -31,6 +32,7 @@ export default function Home({
         handleRemoveItemFromCart={handleRemoveItemFromCart}
         filter={filter}
         search={search}
+        isFetching={isFetching}
       />
       <About />
       <Contact />

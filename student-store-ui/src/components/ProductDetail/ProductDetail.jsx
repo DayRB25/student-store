@@ -9,6 +9,8 @@ import ProductView from "../ProductView/ProductView";
 export default function ProductDetail({
   handleAddItemToCart,
   handleRemoveItemFromCart,
+  isFetching,
+  handleToggleFetch,
 }) {
   const [product, setProduct] = useState(null);
   const location = useLocation();
@@ -16,15 +18,18 @@ export default function ProductDetail({
 
   useEffect(() => {
     const fetchProduct = async () => {
+      handleToggleFetch(true);
       try {
         const res = await axios.get(
           `https://codepath-store-api.herokuapp.com/store/${id}`
         );
 
         setProduct(res.data.product);
+        handleToggleFetch(false);
       } catch (error) {
         // setError(true);
         console.log(error);
+        handleToggleFetch(false);
       }
     };
 
@@ -33,7 +38,7 @@ export default function ProductDetail({
 
   return (
     <div className="product-detail">
-      {product === null && <p>Loading...</p>}
+      {isFetching && <p>Loading...</p>}
       {product !== null && (
         <ProductView
           product={product}

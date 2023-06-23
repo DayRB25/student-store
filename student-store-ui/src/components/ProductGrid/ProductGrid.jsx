@@ -10,6 +10,7 @@ export default function ProductGrid({
   handleRemoveItemFromCart,
   filter,
   search,
+  isFetching,
 }) {
   // state defining the products matching filter
   const [filteredProducts, setfilteredProducts] = useState([]);
@@ -60,8 +61,8 @@ export default function ProductGrid({
 
   return (
     <div id="product-grid" className="product-grid">
-      {products.length == 0 && <p>Loading...</p>}
-      {!products.length == 0 && shopItems}
+      {isFetching && <p>Loading...</p>}
+      {!isFetching && shopItems}
     </div>
   );
 }

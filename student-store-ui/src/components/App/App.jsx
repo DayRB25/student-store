@@ -31,6 +31,10 @@ export default function App() {
     setIsOpen((currentOpen) => !currentOpen);
   };
 
+  const handleToggleFetch = (newFetch) => {
+    setIsFetching(newFetch);
+  };
+
   const handleAddItemToCart = (productId) => {
     // look for item with productId in cart, if found increment count, otherwise add
     let findItem = shoppingCart.find((item) => item.itemId === productId);
@@ -86,14 +90,17 @@ export default function App() {
 
   useEffect(() => {
     const fetchProducts = async () => {
+      setIsFetching(true);
       try {
         const res = await axios.get(
           "https://codepath-store-api.herokuapp.com/store"
         );
         if (res.data.products == []) {
           setError(true);
+          setIsFetching(false);
         } else {
           setProducts(res.data.products);
+          setIsFetching(false);
         }
       } catch (error) {
         setError(true);
@@ -131,6 +138,7 @@ export default function App() {
                   handleFilterChange={handleFilterChange}
                   search={search}
                   handleChangeSearch={handleChangeSearch}
+                  isFetching={isFetching}
                 />
               }
             />
@@ -140,6 +148,8 @@ export default function App() {
                 <ProductDetail
                   handleAddItemToCart={handleAddItemToCart}
                   handleRemoveItemFromCart={handleRemoveItemFromCart}
+                  isFetching={isFetching}
+                  handleToggleFetch={handleToggleFetch}
                 />
               }
             />
