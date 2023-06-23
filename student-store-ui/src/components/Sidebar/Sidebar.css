@@ -12,12 +12,22 @@
     padding: 0 10px;
 }
 
+.material-icons.md-48 {
+    font-size: 40px;
+    color: white;
+}
+
 .sidebar.closed {
     width: 70px;
 }
 
 .sidebar.open {
     width: 500px;
+}
+
+.sidebar.open .toggle {
+    transform: rotateY(180deg);
+
 }
 
 .toggle {
