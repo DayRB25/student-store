@@ -17,7 +17,7 @@ export default function Home({
   handleChangeSearch,
 }) {
   return (
-    <div className="home">
+    <div id="home" className="home">
       <Hero />
       <SearchAndFilter
         filter={filter}

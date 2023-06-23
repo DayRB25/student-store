@@ -45,6 +45,7 @@ export default function ProductGrid({
   ///////
   // generate product card element for each item in filtered product list
   //////
+
   let shopItems = searchedProducts.map((product) => (
     <ProductCard
       product={product}
@@ -58,7 +59,7 @@ export default function ProductGrid({
   ));
 
   return (
-    <div className="product-grid">
+    <div id="product-grid" className="product-grid">
       {products.length == 0 && <p>Loading...</p>}
       {!products.length == 0 && shopItems}
     </div>

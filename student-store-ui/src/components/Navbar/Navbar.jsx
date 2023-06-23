@@ -1,6 +1,7 @@
 import * as React from "react";
 import "./Navbar.css";
 import Logo from "../Logo/Logo";
+import { Link } from "react-scroll";
 
 export default function Navbar() {
   return (
@@ -34,10 +35,18 @@ export default function Navbar() {
           </svg>
         </div>
         <ul className="navbar-links">
-          <li>Home</li>
-          <li>About Us</li>
-          <li>Contact Us</li>
-          <li>Buy Now</li>
+          <Link to="home" smooth={true} duration={500}>
+            <li>Home</li>
+          </Link>
+          <Link to="about" smooth={true} duration={500}>
+            <li>About Us</li>
+          </Link>
+          <Link to="contact" smooth={true} duration={500}>
+            <li>Contact Us</li>
+          </Link>
+          <Link to="product-grid" smooth={true} duration={500}>
+            <li>Buy Now</li>
+          </Link>
         </ul>
       </div>
     </nav>
