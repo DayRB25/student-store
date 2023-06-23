@@ -108,7 +108,11 @@ export default function App() {
         <main>
           {/* YOUR CODE HERE! */}
           <Navbar />
-          <Sidebar isOpen={isOpen} handleOnToggle={handleOnToggle} />
+          <Sidebar
+            isOpen={isOpen}
+            handleOnToggle={handleOnToggle}
+            shoppingCart={shoppingCart}
+          />
           <Home
             products={products}
             handleAddItemToCart={handleAddItemToCart}
