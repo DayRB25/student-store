@@ -112,6 +112,7 @@ export default function App() {
             isOpen={isOpen}
             handleOnToggle={handleOnToggle}
             shoppingCart={shoppingCart}
+            products={products}
           />
           <Home
             products={products}
