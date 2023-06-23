@@ -1,0 +1,27 @@
+.sidebar {
+    background-color: #2c4047;
+    transition: all .2s cubic-bezier(.075,.82,.165,1);
+    position: fixed;
+    z-index: 100;
+    top: 0px;
+    height: 100vh;
+    border-right: solid 1px white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.sidebar.closed {
+    width: 70px;
+}
+
+.sidebar.open {
+    width: 500px;
+}
+
+.toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    margin-top: 15px;
+}

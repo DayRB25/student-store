@@ -26,7 +26,9 @@ export default function App() {
     setFilter(newFilter);
   };
 
-  const handleOnToggle = () => {};
+  const handleOnToggle = () => {
+    setIsOpen((currentOpen) => !currentOpen);
+  };
 
   const handleAddItemToCart = (productId) => {};
 
@@ -61,7 +63,7 @@ export default function App() {
         <main>
           {/* YOUR CODE HERE! */}
           <Navbar />
-          <Sidebar />
+          <Sidebar isOpen={isOpen} handleOnToggle={handleOnToggle} />
           <Home
             products={products}
             handleAddItemToCart={handleAddItemToCart}
