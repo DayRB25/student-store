@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Navbar from "../Navbar/Navbar";
 import Sidebar from "../Sidebar/Sidebar";
 import Home from "../Home/Home";
+import ProductDetail from "../ProductDetail/ProductDetail";
 import "./App.css";
 import { useState, useEffect } from "react";
 import axios from "axios";
@@ -129,7 +130,15 @@ export default function App() {
                 />
               }
             />
-            <Route path="/products/:id" element={<p>Hello!</p>} />
+            <Route
+              path="/products/:id"
+              element={
+                <ProductDetail
+                  handleAddItemToCart={handleAddItemToCart}
+                  handleRemoveItemFromCart={handleRemoveItemFromCart}
+                />
+              }
+            />
           </Routes>
         </main>
       </BrowserRouter>
