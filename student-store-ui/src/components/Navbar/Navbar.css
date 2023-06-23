@@ -35,3 +35,7 @@
     justify-content: space-between;
     max-width: 650px;
 }
+
+.navbar-links li {
+    cursor: pointer;
+}
