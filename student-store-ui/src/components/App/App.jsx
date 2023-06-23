@@ -114,15 +114,23 @@ export default function App() {
             shoppingCart={shoppingCart}
             products={products}
           />
-          <Home
-            products={products}
-            handleAddItemToCart={handleAddItemToCart}
-            handleRemoveItemFromCart={handleRemoveItemFromCart}
-            filter={filter}
-            handleFilterChange={handleFilterChange}
-            search={search}
-            handleChangeSearch={handleChangeSearch}
-          />
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <Home
+                  products={products}
+                  handleAddItemToCart={handleAddItemToCart}
+                  handleRemoveItemFromCart={handleRemoveItemFromCart}
+                  filter={filter}
+                  handleFilterChange={handleFilterChange}
+                  search={search}
+                  handleChangeSearch={handleChangeSearch}
+                />
+              }
+            />
+            <Route path="/products/:id" element={<p>Hello!</p>} />
+          </Routes>
         </main>
       </BrowserRouter>
     </div>
