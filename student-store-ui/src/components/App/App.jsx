@@ -1,5 +1,5 @@
 import * as React from "react";
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Navbar from "../Navbar/Navbar";
 import Sidebar from "../Sidebar/Sidebar";
 import Home from "../Home/Home";
@@ -30,9 +30,54 @@ export default function App() {
     setIsOpen((currentOpen) => !currentOpen);
   };
 
-  const handleAddItemToCart = (productId) => {};
+  const handleAddItemToCart = (productId) => {
+    // look for item with productId in cart, if found increment count, otherwise add
+    let findItem = shoppingCart.find((item) => item.itemId === productId);
 
-  const handleRemoveItemFromCart = (productId) => {};
+    if (findItem === undefined) {
+      setShoppingCart((prevCart) => [
+        ...prevCart,
+        { itemId: productId, quantity: 1 },
+      ]);
+    } else {
+      setShoppingCart((prevCart) =>
+        prevCart.map((item) => {
+          return item.itemId === productId
+            ? { ...item, quantity: item.quantity + 1 }
+            : item;
+        })
+      );
+    }
+  };
+
+  const removeItem = (productId) => {
+    const newCart = shoppingCart.filter((item) => item.itemId !== productId);
+    setShoppingCart(newCart);
+  };
+
+  const handleRemoveItemFromCart = (productId) => {
+    // look for item with productId in cart, if found decrement count, if now 0 remove, otherwise do nothing
+    let findItem = shoppingCart.find((item) => item.itemId === productId);
+
+    if (findItem === undefined) {
+      return;
+    } else {
+      setShoppingCart((prevCart) =>
+        prevCart.map((item) => {
+          if (item.itemId === productId) {
+            let newQty = item.quantity - 1;
+            if (newQty === 0) {
+              removeItem(productId);
+              return;
+            } else {
+              return { ...item, quantity: newQty };
+            }
+          }
+          return item;
+        })
+      );
+    }
+  };
 
   const handleOnCheckoutFormChange = (name, value) => {};
 
