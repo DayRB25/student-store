@@ -153,6 +153,10 @@ export default function App() {
                 />
               }
             />
+            <Route
+              path="*"
+              element={<p id="invalidURL">Ooops... Invalid url!</p>}
+            />
           </Routes>
         </main>
       </BrowserRouter>
