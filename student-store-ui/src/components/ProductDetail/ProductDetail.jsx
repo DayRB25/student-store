@@ -4,6 +4,8 @@ import "./ProductDetail.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
+import ProductView from "../ProductView/ProductView";
+
 export default function ProductDetail({
   handleAddItemToCart,
   handleRemoveItemFromCart,
@@ -32,7 +34,17 @@ export default function ProductDetail({
   return (
     <div className="product-detail">
       {product === null && <p>Loading...</p>}
-      {product !== null && <p>loaded</p>}
+      {product !== null && (
+        <ProductView
+          product={product}
+          productId={product.id}
+          quantity={0}
+          showDescription={true}
+          key={product.id}
+          handleAddItemToCart={handleAddItemToCart}
+          handleRemoveItemFromCart={handleRemoveItemFromCart}
+        />
+      )}
     </div>
   );
 }

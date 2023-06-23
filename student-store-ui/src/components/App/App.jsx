@@ -103,6 +103,10 @@ export default function App() {
     fetchProducts();
   }, []);
 
+  useEffect(() => {
+    console.log(shoppingCart);
+  }, [shoppingCart]);
+
   return (
     <div className="app">
       <BrowserRouter>
