@@ -10,6 +10,7 @@ export default function ShoppingCart({ isOpen, products, shoppingCart }) {
   // for each item in shoppingCart, use id as idx (idx = id - 1) in products array to get the relevant information, idx works as the data was given
   // in the format of first array element is id 1, second element is id 2, so on and so forth
   /////
+
   const displayCartItems = shoppingCart.map((item) => {
     const product = products[item.itemId - 1];
     const totalPrice = item.quantity * product.price;

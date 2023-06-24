@@ -38,7 +38,13 @@ export default function App() {
   const handleAddItemToCart = (productId) => {
     // look for item with productId in cart, if found increment count, otherwise add
     let findItem = shoppingCart.find((item) => item.itemId === productId);
-
+    setProducts((prevCart) =>
+      prevCart.map((item) => {
+        return item.id === productId
+          ? { ...item, quantity: item.quantity + 1 }
+          : item;
+      })
+    );
     if (findItem === undefined) {
       setShoppingCart((prevCart) => [
         ...prevCart,
@@ -57,28 +63,28 @@ export default function App() {
 
   const removeItem = (productId) => {
     const newCart = shoppingCart.filter((item) => item.itemId !== productId);
-    setShoppingCart(newCart);
+    return newCart;
   };
 
   const handleRemoveItemFromCart = (productId) => {
     // look for item with productId in cart, if found decrement count, if now 0 remove, otherwise do nothing
     let findItem = shoppingCart.find((item) => item.itemId === productId);
 
-    if (findItem === undefined) {
-      return;
-    } else {
+    if (findItem) {
       setShoppingCart((prevCart) =>
         prevCart.map((item) => {
           if (item.itemId === productId) {
             let newQty = item.quantity - 1;
-            if (newQty === 0) {
-              removeItem(productId);
-              return;
-            } else {
-              return { ...item, quantity: newQty };
-            }
+            return { ...item, quantity: newQty };
           }
           return item;
+        })
+      );
+      setProducts((prevCart) =>
+        prevCart.map((item) => {
+          return item.id === productId
+            ? { ...item, quantity: item.quantity - 1 }
+            : item;
         })
       );
     }
@@ -99,7 +105,12 @@ export default function App() {
           setError(true);
           setIsFetching(false);
         } else {
-          setProducts(res.data.products);
+          // added quantity property to each product object for quantity tracking in product card component
+          const productsWithQuantity = res.data.products.map((product) => ({
+            ...product,
+            quantity: 0,
+          }));
+          setProducts(productsWithQuantity);
           setIsFetching(false);
         }
       } catch (error) {
@@ -111,7 +122,12 @@ export default function App() {
   }, []);
 
   useEffect(() => {
-    console.log(shoppingCart);
+    shoppingCart.forEach((item) => {
+      if (item.quantity === 0) {
+        setShoppingCart(removeItem(item.itemId));
+        return;
+      }
+    });
   }, [shoppingCart]);
 
   return (

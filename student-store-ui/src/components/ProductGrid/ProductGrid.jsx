@@ -51,7 +51,7 @@ export default function ProductGrid({
     <ProductCard
       product={product}
       productId={product.id}
-      quantity={0}
+      quantity={product.quantity}
       handleAddItemToCart={handleAddItemToCart}
       handleRemoveItemFromCart={handleRemoveItemFromCart}
       showDescription={false}
