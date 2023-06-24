@@ -2,6 +2,7 @@ import * as React from "react";
 import "./Navbar.css";
 import Logo from "../Logo/Logo";
 import { Link } from "react-scroll";
+import { Link as LinkDOM } from "react-router-dom";
 
 export default function Navbar() {
   return (
@@ -35,9 +36,9 @@ export default function Navbar() {
           </svg>
         </div>
         <ul className="navbar-links">
-          <Link to="home" smooth={true} duration={500}>
+          <LinkDOM path="/">
             <li>Home</li>
-          </Link>
+          </LinkDOM>
           <Link to="about" smooth={true} duration={500}>
             <li>About Us</li>
           </Link>

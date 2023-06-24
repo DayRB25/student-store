@@ -166,6 +166,7 @@ export default function App() {
                   handleRemoveItemFromCart={handleRemoveItemFromCart}
                   isFetching={isFetching}
                   handleToggleFetch={handleToggleFetch}
+                  products={products}
                 />
               }
             />

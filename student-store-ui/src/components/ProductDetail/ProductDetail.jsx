@@ -11,6 +11,7 @@ export default function ProductDetail({
   handleRemoveItemFromCart,
   isFetching,
   handleToggleFetch,
+  products,
 }) {
   const [product, setProduct] = useState(null);
   const location = useLocation();
@@ -43,7 +44,7 @@ export default function ProductDetail({
         <ProductView
           product={product}
           productId={product.id}
-          quantity={0}
+          quantity={products[product.id - 1].quantity}
           showDescription={true}
           key={product.id}
           handleAddItemToCart={handleAddItemToCart}
