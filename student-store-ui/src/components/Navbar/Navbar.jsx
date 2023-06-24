@@ -36,7 +36,7 @@ export default function Navbar() {
           </svg>
         </div>
         <ul className="navbar-links">
-          <LinkDOM path="/">
+          <LinkDOM to="/">
             <li>Home</li>
           </LinkDOM>
           <Link to="about" smooth={true} duration={500}>

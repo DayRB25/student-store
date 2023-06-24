@@ -29,6 +29,10 @@ Check out our [deployed Student Store](https://codepath-student-store-demo.surge
 - [x] Added Badge Icon Design to product card component to display quantity of item in cart, ensuring that users do not need to open the sidebar to monitor item quantities.
 - [x] Improved UX by adding an animation to the arrow controlling sidebar to face the direction sidebar will move when pressed.
 
+Video:
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/1ff2bbb79b8d40c3be4791d086f473e4?sid=c9e870db-6b49-4ebd-b98c-5492832ef1cd" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
+
 ## _Week 3_ Application Features
 
 ### Core Features
