@@ -26,7 +26,8 @@ Check out our [deployed Student Store](https://codepath-student-store-demo.surge
 - [x] Users can click the '+' button on a product cart to increment that product in the shopping cart.
 - [x] Users can click the '-' button on a product cart to decrement that product in the shopping cart.
 - [x] The shopping cart displays a table of products, quantities, subtotal, tax, and total.
-- [ ] Your choice! (Replace this bullet explaining what you implemented. Example: Users can leave ratings for products they have purchased.)
+- [x] Added Badge Icon Design to product card component to display quantity of item in cart, ensuring that users do not need to open the sidebar to monitor item quantities.
+- [x] Improved UX by adding an animation to the arrow controlling sidebar to face the direction sidebar will move when pressed.
 
 ## _Week 3_ Application Features
 
