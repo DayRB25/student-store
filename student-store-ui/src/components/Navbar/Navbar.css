@@ -36,6 +36,13 @@
     max-width: 650px;
 }
 
+.hide {
+    display: none;
+}
+.move {
+    margin-left: 600px;
+}
+
 .navbar-links li {
     cursor: pointer;
 }

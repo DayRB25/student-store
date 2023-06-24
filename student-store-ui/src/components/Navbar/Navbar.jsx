@@ -3,8 +3,14 @@ import "./Navbar.css";
 import Logo from "../Logo/Logo";
 import { Link } from "react-scroll";
 import { Link as LinkDOM } from "react-router-dom";
+import { useParams, useLocation } from "react-router-dom";
 
 export default function Navbar() {
+  const location = useLocation();
+  let isId = true;
+  if (location.pathname.split("/").length === 2) {
+    isId = false;
+  }
   return (
     <nav className="navbar">
       <div className="navbar-content">
@@ -37,16 +43,16 @@ export default function Navbar() {
         </div>
         <ul className="navbar-links">
           <LinkDOM to="/">
-            <li>Home</li>
+            <li className={isId ? "move" : undefined}>Home</li>
           </LinkDOM>
           <Link to="about" smooth={true} duration={500}>
-            <li>About Us</li>
+            <li className={isId ? "hide" : undefined}>About Us</li>
           </Link>
           <Link to="contact" smooth={true} duration={500}>
-            <li>Contact Us</li>
+            <li className={isId ? "hide" : undefined}>Contact Us</li>
           </Link>
           <Link to="product-grid" smooth={true} duration={500}>
-            <li>Buy Now</li>
+            <li className={isId ? "hide" : undefined}>Buy Now</li>
           </Link>
         </ul>
       </div>
