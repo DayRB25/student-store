@@ -97,3 +97,23 @@
     color: white;
 }
 
+.receipt-modal-products .product-card {
+    width: 500px;
+    height: 215px;
+    display: flex;
+    background: none;
+    border: none;
+}
+
+.receipt-modal-products .product-card .product-details {
+    border: none;
+}
+
+.receipt-modal-products .product-card .product-img {
+    width: 210px;
+    height: 215px;
+}
+
+.receipt-modal-products .product-buttons {
+    display: none;
+}

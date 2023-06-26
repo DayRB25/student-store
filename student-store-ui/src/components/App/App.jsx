@@ -4,6 +4,7 @@ import Navbar from "../Navbar/Navbar";
 import Sidebar from "../Sidebar/Sidebar";
 import Home from "../Home/Home";
 import ProductDetail from "../ProductDetail/ProductDetail";
+import ReceiptModal from "../ReceiptModal/ReceiptModal";
 import "./App.css";
 import { useState, useEffect } from "react";
 import axios from "axios";
@@ -29,6 +30,10 @@ export default function App() {
       return { ...product, quantity: 0 };
     });
     setProducts(newProducts);
+  };
+
+  const clearReceipt = () => {
+    setReceipt(null);
   };
 
   const handleChangeSearch = (e) => {
@@ -166,6 +171,14 @@ export default function App() {
       <BrowserRouter>
         <main>
           {/* YOUR CODE HERE! */}
+          {receipt !== null && (
+            <ReceiptModal
+              name={receipt.name}
+              total={receipt.total}
+              products={receipt.receipt.productRows}
+              clearReceipt={clearReceipt}
+            />
+          )}
           <Navbar />
           <Sidebar
             isOpen={isOpen}

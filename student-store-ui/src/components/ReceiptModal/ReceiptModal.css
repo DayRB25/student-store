@@ -1,0 +1,40 @@
+.receipt-modal {
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+    color: #f5f5f5;
+}
+
+.receipt-modal-content {
+    background-color: #212121;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #f5f5f5;
+    width: 80%;
+    height: 80%;
+    max-width: 1000px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+}
+
+.receipt-modal-close {
+    background-color: antiquewhite;
+    transition: 0.3s ease-in-out;
+} 
+
+.receipt-modal-products {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* .modalclose:hover {
+    color: #7f7f7f;
+}
