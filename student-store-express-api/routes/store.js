@@ -12,4 +12,18 @@ router.get("/", async (req, res, next) => {
   }
 });
 
+router.get("/:productId", async (req, res, next) => {
+  try {
+    const productId = req.params.productId;
+    const product = await StoreModel.fetchProductById(productId);
+    if (!product) {
+      res.status(404).json("Requested resource not found");
+    }
+    res.status(200).json({ product });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
 module.exports = router;
