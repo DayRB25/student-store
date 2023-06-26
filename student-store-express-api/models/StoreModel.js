@@ -1,5 +1,5 @@
 const { storage } = require("../data/storage");
 
-class Stores {}
+class StoreModel {}
 
-module.exports = Stores;
+module.exports = StoreModel;
