@@ -22,6 +22,15 @@ export default function App() {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
 
+  const [receipt, setReceipt] = useState(null);
+
+  const resetProductQuantities = () => {
+    const newProducts = products.map((product) => {
+      return { ...product, quantity: 0 };
+    });
+    setProducts(newProducts);
+  };
+
   const handleChangeSearch = (e) => {
     setSearch(e.target.value);
   };
@@ -96,7 +105,25 @@ export default function App() {
   const handleOnCheckoutFormChange = (name, value) => {
     name === "email" ? setEmail(value) : setName(value);
   };
-  const handleOnSubmitCheckoutForm = () => {};
+  const handleOnSubmitCheckoutForm = async () => {
+    const body = {
+      user: { name: name, email: email },
+      shoppingCart: [...shoppingCart],
+    };
+    try {
+      const res = await axios.post(
+        "https://codepath-store-api.herokuapp.com/store",
+        body
+      );
+      setShoppingCart([]);
+      setReceipt(res.data.purchase);
+      handleOnCheckoutFormChange("name", "");
+      handleOnCheckoutFormChange("email", "");
+      resetProductQuantities();
+    } catch (err) {
+      setError(true);
+    }
+  };
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -148,6 +175,7 @@ export default function App() {
             name={name}
             email={email}
             handleOnCheckoutFormChange={handleOnCheckoutFormChange}
+            handleOnSubmitCheckoutForm={handleOnSubmitCheckoutForm}
           />
           <Routes>
             <Route

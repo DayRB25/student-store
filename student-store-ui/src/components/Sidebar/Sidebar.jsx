@@ -13,6 +13,7 @@ export default function Sidebar({
   name,
   email,
   handleOnCheckoutFormChange,
+  handleOnSubmitCheckoutForm,
 }) {
   return (
     <section className={isOpen ? "sidebar open" : "sidebar closed"}>
@@ -31,6 +32,7 @@ export default function Sidebar({
               name={name}
               email={email}
               handleOnCheckoutFormChange={handleOnCheckoutFormChange}
+              handleOnSubmitCheckoutForm={handleOnSubmitCheckoutForm}
             />
           </>
         )}

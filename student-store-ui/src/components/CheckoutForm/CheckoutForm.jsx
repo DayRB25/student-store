@@ -6,6 +6,7 @@ export default function CheckoutForm({
   name,
   email,
   handleOnCheckoutFormChange,
+  handleOnSubmitCheckoutForm,
 }) {
   const handleFormChange = (e) => {
     const inputName = e.target.name;
@@ -32,7 +33,9 @@ export default function CheckoutForm({
         value={name}
         onChange={handleFormChange}
       />
-      <button className="checkout-button">Checkout</button>
+      <button className="checkout-button" onClick={handleOnSubmitCheckoutForm}>
+        Checkout
+      </button>
     </div>
   );
 }
