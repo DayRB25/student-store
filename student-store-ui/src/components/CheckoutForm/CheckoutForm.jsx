@@ -2,16 +2,17 @@ import * as React from "react";
 import "./CheckoutForm.css";
 import { useState } from "react";
 
-export default function CheckoutForm() {
-  const [email, setEmail] = useState("");
-  const [name, setName] = useState("");
+export default function CheckoutForm({
+  name,
+  email,
+  handleOnCheckoutFormChange,
+}) {
+  const handleFormChange = (e) => {
+    const inputName = e.target.name;
+    const inputValue = e.target.value;
+    handleOnCheckoutFormChange(inputName, inputValue);
+  };
 
-  const handleEmailChange = (e) => {
-    setEmail(e.target.value);
-  };
-  const handleNameChange = (e) => {
-    setName(e.target.value);
-  };
   return (
     <div className="checkout-form">
       <h3>Payment Info</h3>
@@ -21,7 +22,7 @@ export default function CheckoutForm() {
         placeholder="student@codepath.org"
         name="email"
         value={email}
-        onChange={handleEmailChange}
+        onChange={handleFormChange}
       />
       <input
         className="checkout-form-input"
@@ -29,7 +30,7 @@ export default function CheckoutForm() {
         placeholder="Student Name"
         name="name"
         value={name}
-        onChange={handleNameChange}
+        onChange={handleFormChange}
       />
       <button className="checkout-button">Checkout</button>
     </div>

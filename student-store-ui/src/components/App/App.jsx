@@ -19,6 +19,9 @@ export default function App() {
   const [filter, setFilter] = useState("all");
   const [search, setSearch] = useState("");
 
+  const [email, setEmail] = useState("");
+  const [name, setName] = useState("");
+
   const handleChangeSearch = (e) => {
     setSearch(e.target.value);
   };
@@ -90,8 +93,9 @@ export default function App() {
     }
   };
 
-  const handleOnCheckoutFormChange = (name, value) => {};
-
+  const handleOnCheckoutFormChange = (name, value) => {
+    name === "email" ? setEmail(value) : setName(value);
+  };
   const handleOnSubmitCheckoutForm = () => {};
 
   useEffect(() => {
@@ -141,6 +145,9 @@ export default function App() {
             handleOnToggle={handleOnToggle}
             shoppingCart={shoppingCart}
             products={products}
+            name={name}
+            email={email}
+            handleOnCheckoutFormChange={handleOnCheckoutFormChange}
           />
           <Routes>
             <Route
