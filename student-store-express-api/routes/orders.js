@@ -13,4 +13,18 @@ router.get("/", async (req, res, next) => {
   }
 });
 
+router.get("/:orderId", async (req, res, next) => {
+  try {
+    const orderId = req.params.orderId;
+    const order = await StoreModel.fetchOrderById(orderId);
+    if (!order) {
+      res.status(404).json("Requested resource not found");
+    }
+    res.status(200).json({ order });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
 module.exports = router;

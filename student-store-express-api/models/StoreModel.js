@@ -17,6 +17,14 @@ class StoreModel {
       .value();
     return product;
   }
+  static async fetchOrderById(orderId) {
+    // fetch a single order
+    const order = storage
+      .get("purchases")
+      .find({ id: Number(orderId) })
+      .value();
+    return order;
+  }
 }
 
 module.exports = StoreModel;
