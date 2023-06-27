@@ -18,7 +18,6 @@ router.post("/", async (req, res, next) => {
     const newOrder = await StoreModel.recordOrder(order);
     res.status(201).json({ newOrder });
   } catch (err) {
-    console.log(err);
     res.status(500).json(err);
   }
 });
@@ -32,7 +31,6 @@ router.get("/:productId", async (req, res, next) => {
     }
     res.status(200).json({ product });
   } catch (err) {
-    console.log(err);
     res.status(500).json(err);
   }
 });

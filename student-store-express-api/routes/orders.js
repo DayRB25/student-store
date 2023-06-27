@@ -8,7 +8,6 @@ router.get("/", async (req, res, next) => {
     const orders = await StoreModel.listOrders();
     res.status(200).json({ orders });
   } catch (err) {
-    console.log(err);
     res.status(500).json(err);
   }
 });
@@ -22,7 +21,6 @@ router.get("/:orderId", async (req, res, next) => {
     }
     res.status(200).json({ order });
   } catch (err) {
-    console.log(err);
     res.status(500).json(err);
   }
 });
