@@ -9,6 +9,8 @@ import "./App.css";
 import { useState, useEffect } from "react";
 import axios from "axios";
 
+import Orders from "../Orders/Orders";
+
 export default function App() {
   const [products, setProducts] = useState([]);
   const [isFetching, setIsFetching] = useState(true);
@@ -215,6 +217,7 @@ export default function App() {
                 />
               }
             />
+            <Route path="/orders/" element={<Orders />} />
             <Route
               path="*"
               element={<p id="invalidURL">Ooops... Invalid url!</p>}

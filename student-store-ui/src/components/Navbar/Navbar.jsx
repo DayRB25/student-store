@@ -54,6 +54,9 @@ export default function Navbar() {
           <Link to="product-grid" smooth={true} duration={500}>
             <li className={isId ? "hide" : undefined}>Buy Now</li>
           </Link>
+          <LinkDOM to="/orders">
+            <li className={isId ? "hide" : undefined}>Orders</li>
+          </LinkDOM>
         </ul>
       </div>
     </nav>
