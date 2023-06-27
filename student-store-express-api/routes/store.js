@@ -12,6 +12,17 @@ router.get("/", async (req, res, next) => {
   }
 });
 
+router.post("/", async (req, res, next) => {
+  try {
+    const order = req.body.order;
+    const newOrder = await StoreModel.recordOrder(order);
+    res.status(201).json({ newOrder });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
 router.get("/:productId", async (req, res, next) => {
   try {
     const productId = req.params.productId;
