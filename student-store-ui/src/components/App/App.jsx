@@ -112,16 +112,15 @@ export default function App() {
   };
   const handleOnSubmitCheckoutForm = async () => {
     const body = {
-      user: { name: name, email: email },
-      shoppingCart: [...shoppingCart],
+      order: {
+        user: { name: name, email: email },
+        shoppingCart: [...shoppingCart],
+      },
     };
     try {
-      const res = await axios.post(
-        "https://codepath-store-api.herokuapp.com/store",
-        body
-      );
+      const res = await axios.post("http://localhost:3001/api/store", body);
       setShoppingCart([]);
-      setReceipt(res.data.purchase);
+      setReceipt(res.data.newOrder);
       handleOnCheckoutFormChange("name", "");
       handleOnCheckoutFormChange("email", "");
       resetProductQuantities();
@@ -134,9 +133,7 @@ export default function App() {
     const fetchProducts = async () => {
       setIsFetching(true);
       try {
-        const res = await axios.get(
-          "https://codepath-store-api.herokuapp.com/store"
-        );
+        const res = await axios.get("http://localhost:3001/api/store");
         if (res.data.products == []) {
           setError(true);
           setIsFetching(false);
@@ -173,9 +170,9 @@ export default function App() {
           {/* YOUR CODE HERE! */}
           {receipt !== null && (
             <ReceiptModal
-              name={receipt.name}
+              name={receipt.user.name}
               total={receipt.total}
-              products={receipt.receipt.productRows}
+              products={receipt.productRows}
               clearReceipt={clearReceipt}
             />
           )}

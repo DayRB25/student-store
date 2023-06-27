@@ -21,9 +21,9 @@ export default function ProductDetail({
     const fetchProduct = async () => {
       handleToggleFetch(true);
       try {
-        const res = await axios.get(
-          `https://codepath-store-api.herokuapp.com/store/${id}`
-        );
+        const res = await axios.get(`http://localhost:3001/api/store/${id}`, {
+          params: { productId: id },
+        });
 
         setProduct(res.data.product);
         handleToggleFetch(false);
