@@ -102,6 +102,7 @@
 
 .receipt-modal-products .product-card .product-details {
     border: none;
+    margin-left: 20px;
 }
 
 .receipt-modal-products .product-card .product-img {
