@@ -6,6 +6,15 @@ import { useNavigate } from "react-router-dom";
 export default function OrderCard({ order, showCart }) {
   let navigate = useNavigate();
 
+  const orderDetails = order.shoppingCart.map((item) => {
+    return (
+      <div className="order-card-item">
+        <p>{`Item: ${item.itemId}`}</p>
+        <p>{`Quantity: ${item.quantity}`}</p>
+      </div>
+    );
+  });
+
   return (
     <div className="order-card">
       <div className="order-card-user">
@@ -21,16 +30,7 @@ export default function OrderCard({ order, showCart }) {
           View Order
         </button>
       )}
-      {showCart && (
-        <div className="order-card-cart-items">
-          {order.shoppingCart.map((item) => (
-            <>
-              <p>{`Item: ${item.itemId}`}</p>
-              <p>{`Quantity: ${item.quantity}`}</p>
-            </>
-          ))}
-        </div>
-      )}
+      {showCart && orderDetails}
     </div>
   );
 }

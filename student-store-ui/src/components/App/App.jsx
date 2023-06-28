@@ -10,6 +10,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 import Orders from "../Orders/Orders";
+import Order from "../Order/Order";
 
 export default function App() {
   const [products, setProducts] = useState([]);
@@ -218,6 +219,7 @@ export default function App() {
               }
             />
             <Route path="/orders/" element={<Orders />} />
+            <Route path="/orders/:orderId" element={<Order />} />
             <Route
               path="*"
               element={<p id="invalidURL">Ooops... Invalid url!</p>}
