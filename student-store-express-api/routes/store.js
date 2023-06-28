@@ -15,6 +15,13 @@ router.get("/", async (req, res, next) => {
 router.post("/", async (req, res, next) => {
   try {
     const order = req.body.order;
+    const cart = order.shoppingCart;
+    for (let i = 0; i < cart.length; i++) {
+      if (!cart[i].quantity || !cart[i].itemId) {
+        res.status(400).json("Invalid order. Try again");
+        return;
+      }
+    }
     const newOrder = await StoreModel.recordOrder(order);
     res.status(201).json({ newOrder });
   } catch (err) {
