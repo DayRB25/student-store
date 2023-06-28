@@ -9,7 +9,7 @@ export default function OrderCard({ order, showCart }) {
   const orderDetails = order.shoppingCart.map((item) => {
     return (
       <div className="order-card-item">
-        <p>{`Item: ${item.itemId}`}</p>
+        <p>{`Item ID: ${item.itemId}`}</p>
         <p>{`Quantity: ${item.quantity}`}</p>
       </div>
     );
@@ -26,11 +26,14 @@ export default function OrderCard({ order, showCart }) {
         <p>{`Total: ${order.total}`}</p>
       </div>
       {!showCart && (
-        <button onClick={() => navigate(`/orders/${order.id}`)}>
-          View Order
-        </button>
+        <button onClick={() => navigate(`/orders/${order.id}`)}>Details</button>
       )}
-      {showCart && orderDetails}
+      {showCart && (
+        <div className="order-card-items">
+          <p className="item-title">Item List:</p>
+          {orderDetails}
+        </div>
+      )}
     </div>
   );
 }

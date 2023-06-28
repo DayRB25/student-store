@@ -42,13 +42,22 @@ export default function Orders() {
   return (
     <div className="orders">
       <div className="orders-content">
-        <input
-          type="text"
-          placeholder="Enter email to find order"
-          value={searchEmail}
-          onChange={handleUpdateSearchEmail}
-        />
-        {orderItems}
+        <div className="orders-content-search">
+          <input
+            type="text"
+            placeholder="Enter email"
+            value={searchEmail}
+            onChange={handleUpdateSearchEmail}
+          />
+          <button>
+            <img
+              className="searchIcon"
+              alt="magnifying glass"
+              src="src/assetts/magnifying-glass.png"
+            />
+          </button>
+        </div>
+        <div className="orders-content-grid">{orderItems}</div>
       </div>
     </div>
   );
