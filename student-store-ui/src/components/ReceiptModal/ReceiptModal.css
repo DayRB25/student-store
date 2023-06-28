@@ -22,6 +22,8 @@
     flex-direction: column;
     align-items: center;
     gap: 3px;
+    overflow: scroll;
+
 }
 
 .receipt-modal-close {

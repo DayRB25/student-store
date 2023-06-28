@@ -23,7 +23,7 @@ export default function OrderCard({ order, showCart }) {
       </div>
       <div className="order-card-cart-details">
         <p>{`Number of Items: ${order.shoppingCart.length}`}</p>
-        <p>{`Total: ${order.total}`}</p>
+        <p>{`Total: $${order.total.toFixed(2)}`}</p>
       </div>
       {!showCart && (
         <button onClick={() => navigate(`/orders/${order.id}`)}>Details</button>
