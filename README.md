@@ -48,4 +48,9 @@ Video:
 - [x] Create an endpoint for fetching all orders in the database and an endpoint for serving an individual order based on its ID.
 - [x] Build a page in the UI that displays the list of all past orders. The user should be able to click on any individual order to take them to a more detailed page of the transaction.
 - [x] Allow users to use an input to filter orders by the email of the person who placed the order.
-- [ ] Your choice! (Replace this bullet explaining what you implemented. Example: Users can create a wish list of products they are interested in but not yet ready to purchase.)
+- [x] Password protection for order details screen, so only users with order id can see extended details
+- [x] Notify user when no password or incorrect password is input into OrderCard component for better UX
+
+Video:
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/8921826aceee42fe9699190729103171?sid=db18c7b8-1319-4a9e-9aab-7680b22b0619" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
