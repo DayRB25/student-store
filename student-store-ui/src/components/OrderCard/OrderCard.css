@@ -63,3 +63,23 @@
 .order-card-item {
     margin-top: 10px;
 }
+
+.order-card-view-details {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.order-card-view-details p {
+    color: red;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.order-card-view-details input {
+    height: 35px;
+    width: 90px;
+    border: 1px solid #e4e4e4;
+    font-size: 16px;
+    padding: 0 10px;
+}

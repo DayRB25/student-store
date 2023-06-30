@@ -2,7 +2,13 @@ import * as React from "react";
 import ProductCard from "../ProductCard/ProductCard";
 import "./ReceiptModal.css";
 
-export default function ReceiptModal({ name, products, total, clearReceipt }) {
+export default function ReceiptModal({
+  name,
+  products,
+  total,
+  clearReceipt,
+  id,
+}) {
   return (
     <div class="receipt-modal">
       <div id="receipt-modal-content" class="receipt-modal-content">
@@ -21,6 +27,7 @@ export default function ReceiptModal({ name, products, total, clearReceipt }) {
         <p class="receipt-modal-total">{`Your total was: $${parseFloat(
           total
         ).toFixed(2)}`}</p>
+        <p>{`Your passcode is: ${id}`}</p>
         <button class="receipt-modal-close" onClick={clearReceipt}>
           Done
         </button>

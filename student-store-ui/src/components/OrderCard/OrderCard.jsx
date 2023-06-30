@@ -6,6 +6,22 @@ import { useNavigate } from "react-router-dom";
 export default function OrderCard({ order, showCart }) {
   let navigate = useNavigate();
 
+  const [orderPassword, setOrderPassword] = useState("");
+  const [wrongPassword, setWrongPassword] = useState(false);
+
+  const handlePasswordChange = (e) => {
+    setOrderPassword(e.target.value);
+  };
+
+  const checkPassword = () => {
+    if (orderPassword === order.id.toString()) {
+      setWrongPassword(false);
+      navigate(`/orders/${order.id}`);
+    } else {
+      setWrongPassword(true);
+    }
+  };
+
   const orderDetails = order.shoppingCart.map((item) => {
     return (
       <div className="order-card-item">
@@ -26,7 +42,16 @@ export default function OrderCard({ order, showCart }) {
         <p>{`Total: $${order.total.toFixed(2)}`}</p>
       </div>
       {!showCart && (
-        <button onClick={() => navigate(`/orders/${order.id}`)}>Details</button>
+        <div className="order-card-view-details">
+          <input
+            type="text"
+            placeholder="Order ID"
+            value={orderPassword}
+            onChange={handlePasswordChange}
+          ></input>
+          {wrongPassword && <p>Wrong ID</p>}
+          <button onClick={checkPassword}>Details</button>
+        </div>
       )}
       {showCart && (
         <div className="order-card-items">

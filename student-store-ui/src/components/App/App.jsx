@@ -177,6 +177,7 @@ export default function App() {
               total={receipt.total}
               products={receipt.productRows}
               clearReceipt={clearReceipt}
+              id={receipt.id}
             />
           )}
           <Navbar />
