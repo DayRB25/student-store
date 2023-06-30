@@ -10,6 +10,10 @@ export default function Sidebar({
   handleOnToggle,
   shoppingCart,
   products,
+  name,
+  email,
+  handleOnCheckoutFormChange,
+  handleOnSubmitCheckoutForm,
 }) {
   return (
     <section className={isOpen ? "sidebar open" : "sidebar closed"}>
@@ -24,7 +28,12 @@ export default function Sidebar({
               products={products}
               shoppingCart={shoppingCart}
             />
-            <CheckoutForm />
+            <CheckoutForm
+              name={name}
+              email={email}
+              handleOnCheckoutFormChange={handleOnCheckoutFormChange}
+              handleOnSubmitCheckoutForm={handleOnSubmitCheckoutForm}
+            />
           </>
         )}
       </div>

@@ -27,4 +27,11 @@
     background: transparent;
     border: solid 1px white;
     color: #fff;
+    transition: 0.3s ease-in-out;
+
+}
+
+.checkout-button:hover {
+    background-color: #fff;
+    color: #2c4047;
 }

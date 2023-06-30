@@ -1,0 +1,9 @@
+.order {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.order-content {
+    margin-top: 40px;
+}

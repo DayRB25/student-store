@@ -11,11 +11,6 @@
     height: 900px;
 }
 
-/* .product-view-card .product-card .product-img img{
-    width: 800px;
-    height: 806px;
-} */
-
 .product-view-card .product-card .product-img{
     width: 800px;
     height: 806px;
@@ -97,3 +92,24 @@
     color: white;
 }
 
+.receipt-modal-products .product-card {
+    width: 500px;
+    height: 215px;
+    display: flex;
+    background: none;
+    border: none;
+}
+
+.receipt-modal-products .product-card .product-details {
+    border: none;
+    margin-left: 20px;
+}
+
+.receipt-modal-products .product-card .product-img {
+    width: 210px;
+    height: 215px;
+}
+
+.receipt-modal-products .product-buttons {
+    display: none;
+}

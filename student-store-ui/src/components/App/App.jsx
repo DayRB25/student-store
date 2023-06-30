@@ -4,9 +4,13 @@ import Navbar from "../Navbar/Navbar";
 import Sidebar from "../Sidebar/Sidebar";
 import Home from "../Home/Home";
 import ProductDetail from "../ProductDetail/ProductDetail";
+import ReceiptModal from "../ReceiptModal/ReceiptModal";
 import "./App.css";
 import { useState, useEffect } from "react";
 import axios from "axios";
+
+import Orders from "../Orders/Orders";
+import Order from "../Order/Order";
 
 export default function App() {
   const [products, setProducts] = useState([]);
@@ -18,6 +22,22 @@ export default function App() {
 
   const [filter, setFilter] = useState("all");
   const [search, setSearch] = useState("");
+
+  const [email, setEmail] = useState("");
+  const [name, setName] = useState("");
+
+  const [receipt, setReceipt] = useState(null);
+
+  const resetProductQuantities = () => {
+    const newProducts = products.map((product) => {
+      return { ...product, quantity: 0 };
+    });
+    setProducts(newProducts);
+  };
+
+  const clearReceipt = () => {
+    setReceipt(null);
+  };
 
   const handleChangeSearch = (e) => {
     setSearch(e.target.value);
@@ -90,17 +110,33 @@ export default function App() {
     }
   };
 
-  const handleOnCheckoutFormChange = (name, value) => {};
-
-  const handleOnSubmitCheckoutForm = () => {};
+  const handleOnCheckoutFormChange = (name, value) => {
+    name === "email" ? setEmail(value) : setName(value);
+  };
+  const handleOnSubmitCheckoutForm = async () => {
+    const body = {
+      order: {
+        user: { name: name, email: email },
+        shoppingCart: [...shoppingCart],
+      },
+    };
+    try {
+      const res = await axios.post("http://localhost:3001/api/store", body);
+      setShoppingCart([]);
+      setReceipt(res.data.newOrder);
+      handleOnCheckoutFormChange("name", "");
+      handleOnCheckoutFormChange("email", "");
+      resetProductQuantities();
+    } catch (err) {
+      setError(true);
+    }
+  };
 
   useEffect(() => {
     const fetchProducts = async () => {
       setIsFetching(true);
       try {
-        const res = await axios.get(
-          "https://codepath-store-api.herokuapp.com/store"
-        );
+        const res = await axios.get("http://localhost:3001/api/store");
         if (res.data.products == []) {
           setError(true);
           setIsFetching(false);
@@ -135,12 +171,25 @@ export default function App() {
       <BrowserRouter>
         <main>
           {/* YOUR CODE HERE! */}
+          {receipt !== null && (
+            <ReceiptModal
+              name={receipt.user.name}
+              total={receipt.total}
+              products={receipt.productRows}
+              clearReceipt={clearReceipt}
+              id={receipt.id}
+            />
+          )}
           <Navbar />
           <Sidebar
             isOpen={isOpen}
             handleOnToggle={handleOnToggle}
             shoppingCart={shoppingCart}
             products={products}
+            name={name}
+            email={email}
+            handleOnCheckoutFormChange={handleOnCheckoutFormChange}
+            handleOnSubmitCheckoutForm={handleOnSubmitCheckoutForm}
           />
           <Routes>
             <Route
@@ -170,6 +219,8 @@ export default function App() {
                 />
               }
             />
+            <Route path="/orders/" element={<Orders />} />
+            <Route path="/orders/:orderId" element={<Order />} />
             <Route
               path="*"
               element={<p id="invalidURL">Ooops... Invalid url!</p>}
